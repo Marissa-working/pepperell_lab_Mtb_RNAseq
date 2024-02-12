@@ -1,8 +1,7 @@
 universe = Docker
 docker_image = marissazhang/mtb_rnaseq:1.0
 requirements = (Target.HasCHTCStaging==TRUE)
-transfer_input_files = bwa.sh, file:///staging/groups/pepperell_group/Mtb_RNAseq/MtbNCBIH37Rv.fa, 
-file:///staging/groups/pepperell_group/Mtb_RNAseq/fastq_out.tar.gz
+transfer_input_files = bwa.sh, file:///staging/groups/pepperell_group/Mtb_RNAseq/MtbNCBIH37Rv.fa, file:///staging/groups/pepperell_group/Mtb_RNAseq/fastq_out.tar.gz
 transfer_output_files = bwa_out.tar.gz
 transfer_output_remaps = "bwa_out.tar.gz = file:///staging/groups/pepperell_group/Mtb_RNAseq/bwa_out.tar.gz"
 executable = bwa.sh
