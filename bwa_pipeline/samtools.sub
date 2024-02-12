@@ -1,0 +1,20 @@
+universe = Docker
+docker_image = marissazhang/mtb_rnaseq:1.0
+requirements = (Target.HasCHTCStaging==TRUE)
+transfer_input_files = samtools.sh, file:///staging/groups/pepperell_group/Mtb_RNAseq/MtbNCBIH37Rv.fa, file:///staging/groups/pepperell_group/Mtb_RNAseq/bwa_out.tar.gz
+transfer_output_files = samtools_out_new.tar.gz
+transfer_output_remaps = "samtools_out_new.tar.gz = file:///staging/groups/pepperell_group/Mtb_RNAseq/samtools_out_new.tar.gz"
+executable = samtools.sh
+log = $(batch_name)_$(jobName)_$(Process).log
+error = $(batch_name)_$(jobName)_$(Process).err
+output = $(batch_name)_$(jobName)_$(Process).out
+
+should_transfer_files= YES
+when_to_transfer_output = ON_EXIT
+request_memory = 5GB
+request_disk = 60GB
+request_cpus = 1
+jobName = samtools_new
+batch_name = m5GB_d60GB_1cpu
+
+queue
