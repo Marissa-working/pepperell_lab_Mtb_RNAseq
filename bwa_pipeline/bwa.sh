@@ -14,7 +14,7 @@ for file in *_R1_001.fastq.gz; do
     sample=$(echo "$file" | sed 's/_R1_001.fastq.gz//')
 
     # Execute the bwa command
-    bwa mem -M -t 8 MtbNCBIH37Rv.fa ${sample}_R1_001.fastq.gz -2 ${sample}_R2_001.fastq.gz > ${sample}.sam
+    bwa mem -M -t 8 MtbNCBIH37Rv.fa ${sample}_R1_001.fastq.gz ${sample}_R2_001.fastq.gz > ${sample}.sam
     mv ${sample}.sam bwa_out/
 done
 tar -czf bwa_out.tar.gz bwa_out/
