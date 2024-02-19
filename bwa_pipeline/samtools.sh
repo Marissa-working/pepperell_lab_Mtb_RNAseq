@@ -8,16 +8,14 @@ mkdir samtools_out_new
 # Iterate through the list of files
 for file in bwa_out/*.sam; do
     # Extract the sample name
-    sample=$(echo "$file" | sed 's/\.sam//')  # Corrected sed command
-    
-    # Downstream tools
-    # Use samtools to explore alignments
+    sample=$(echo "$file" | sed 's/bwa_out\///;s/\.sam//')  # Corrected sed command
     
     # Samtools: convert SAM to BAM
-    samtools view -bhSu ${file} -o samtools_out_new/${sample}.bam  
+    samtools view -bhSu ${file} -o ${sample}.bam 
     
     # Samtools: sort
-    sort -O bam -T samtools_out_new/${sample}.sort samtools_out_new/${sample}.bam 
+    # samtools sort -O BAM -T samtools_out_new/${sample}.sort ${sample}.bam 
+    samtools sort ${sample}.bam -o samtools_out_new/${sample}.sorted.bam
 done
 
 # Create a tar archive of the samtools_out directory
