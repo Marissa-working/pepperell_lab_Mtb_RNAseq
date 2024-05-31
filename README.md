@@ -17,3 +17,6 @@ fastqc => bwa/bowtie => samtools
 * The fastqc output is stored in fastq_out.tar.gz. (Should be passed into the bwa)
 * The bowtie output is stored in bwa_out.tar.gz. (Should be passed into the samtools)
 * The samtools output is stored in samtools_out_new.tar.gz. (Include the .sorted.bam files)
+## Qualimap Pipeline
+* Docker image from pegi3s/qualimap
+* Using CHTC staging area 
