@@ -1,0 +1,18 @@
+universe = Docker
+docker_image = pegi3s/qualimap
+requirements = (Target.HasCHTCStaging==TRUE)
+transfer_input_files = qualimap.sh, file:///staging/groups/pepperell_group/Mtb_RNAseq/MtbNCBIH37Rv.gtf, file:///staging/groups/pepperell_group/Mtb_RNAseq/testsamtools.tar.gz 
+transfer_output_files = qualimap_out.tar.gz
+transfer_output_remaps = "qualimap_out.tar.gz = file:///staging/groups/pepperell_group/Mtb_RNAseq/qualimap_out.tar.gz"
+executable = qualimap.sh
+log = $(batch_name)_$(jobName)_$(Process).log
+error = $(batch_name)_$(jobName)_$(Process).err
+output = $(batch_name)_$(jobName)_$(Process).out
+
+should_transfer_files= YES
+when_to_transfer_output = ON_EXIT
+request_memory = 20GB
+request_disk = 80GB
+request_cpus = 1
+jobName = qualimap
+batch_name = m20GB_d80GB_1cpu
